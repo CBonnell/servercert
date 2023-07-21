@@ -1725,8 +1725,8 @@ ECDSA: The CA SHOULD confirm the validity of all keys using either the ECC Full 
 
 Private Keys corresponding to Root Certificates MUST NOT be used to sign Certificates except in the following cases:
 
-1. Self-signed Certificates to represent the Root CA itself; or
-2. Certificates for Subordinate CAs and Cross-Certified Subordinate CA Certificates; or
+1. Self-signed Certificates to represent the Root CA itself; and/or
+2. Certificates for Subordinate CAs and Cross-Certified Subordinate CA Certificates; and/or
 3. Certificates for OCSP Response verification.
 
 ## 6.2 Private Key Protection and Cryptographic Module Engineering Controls
@@ -2430,7 +2430,7 @@ If present, the Certificate Policies extension MUST contain at least one `Policy
 |     Any other identifier | MAY             | If present, MUST be defined and documented in the CA's Certificate Policy and/or Certification Practice Statement. |
 | `policyQualifiers`       | * | If present, MUST contain only permitted `policyQualifiers` from the table below. |
 
-If the Subscriber Certificate contains a `policyIdentifier` of `2.23.140.1.1` (the Reserved Certificate Policy Identifier for Extended Validation Certificates), then a `policyQualifier` of type `id-qt-cps` MUST be present and MUST contain the HTTP or HTTPS URL for the Issuing CA's Certificate Policies, Certification Practice Statement, Relying Party Agreement, or other pointer to online policy information provided by the Issuing CA. If the Subscriber Certificate does not contain a `policyIdentifier` of `2.23.140.1.1`, then the inclusion of `policyQualifiers` is NOT RECOMMENDED.
+If the Subscriber Certificate contains a `policyIdentifier` of `2.23.140.1.1` (the Reserved Certificate Policy Identifier for Extended Validation Certificates), then a `PolicyQualifierInfo` whose `policyQualifierId` is `id-qt-cps` MUST be present and MUST contain the HTTP or HTTPS URL for the Issuing CA's Certificate Policies, Certification Practice Statement, Relying Party Agreement, or other pointer to online policy information provided by the Issuing CA. If the Subscriber Certificate does not contain a `policyIdentifier` of `2.23.140.1.1`, then the inclusion of `policyQualifiers` is NOT RECOMMENDED.
 
 This Profile RECOMMENDS that the first `PolicyInformation` value within the Certificate Policies extension contains the Reserved Certificate Policy Identifier (see [7.1.6.1](#7161-reserved-certificate-policy-identifiers))[^first_policy_note]. Regardless of the order of `PolicyInformation` values, the Certificate Policies extension MUST contain exactly one Reserved Certificate Policy Identifier.
 
