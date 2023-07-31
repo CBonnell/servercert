@@ -1726,8 +1726,9 @@ ECDSA: The CA SHOULD confirm the validity of all keys using either the ECC Full 
 Private Keys corresponding to Root Certificates MUST NOT be used to sign Certificates except in the following cases:
 
 1. Self-signed Certificates to represent the Root CA itself;
-2. Certificates for Subordinate CAs and Cross-Certified Subordinate CA Certificates; and/or
-3. Certificates for OCSP Response verification.
+2. Certificates for Subordinate CAs and Cross-Certified Subordinate CA Certificates;
+3. Certificates for infrastructure purposes (administrative role certificates, internal CA operational device certificates); and/or
+4. Certificates for OCSP Response verification.
 
 ## 6.2 Private Key Protection and Cryptographic Module Engineering Controls
 
@@ -1815,7 +1816,7 @@ Certificates MUST be of type X.509 v3.
 
 ### 7.1.2 Certificate Content and Extensions
 
-If the CA asserts compliance with these Baseline Requirements, all certificates that it issues MUST comply with one of the following certificate profiles, which incorporate, and are derived from [RFC 5280](https://tools.ietf.org/html/rfc5280). Except as explicitly noted, all normative requirements imposed by RFC 5280 shall apply, in addition to the normative requirements imposed by this document. CAs SHOULD examine [RFC 5280, Appendix B](https://tools.ietf.org/html/rfc5280#appendix-B) for further issues to be aware of.
+If the CA asserts compliance with these Baseline Requirements, all certificates that it issues (with the exception of certificates for infrastructure purposes [^infra_cert]) MUST comply with one of the following certificate profiles, which incorporate, and are derived from [RFC 5280](https://tools.ietf.org/html/rfc5280). Except as explicitly noted, all normative requirements imposed by RFC 5280 shall apply, in addition to the normative requirements imposed by this document. CAs SHOULD examine [RFC 5280, Appendix B](https://tools.ietf.org/html/rfc5280#appendix-B) for further issues to be aware of.
 
   * CA Certificates
     * [Section 7.1.2.1 - Root CA Certificate Profile](#7121-root-ca-certificate-profile)
@@ -1830,6 +1831,11 @@ If the CA asserts compliance with these Baseline Requirements, all certificates 
   * [Section 7.1.2.7 - Subscriber (End-Entity) Certificate Profile](#7127-subscriber-server-certificate-profile)
   * [Section 7.1.2.8 - OCSP Responder Certificate Profile](#7128-ocsp-responder-certificate-profile)
   * [Section 7.1.2.9 - Precertificate Profile](#7129-precertificate-profile)
+
+[^infra_cert]: The CA SHALL NOT issue a certificate that does not follow of any of the certificates profiles that are listed above, except for certificates that are issued for infrastructure purposes (administrative role certificates, internal CA operational device certificates). If the CA issues certificates for infrastructure purposes that do not follow any of the certificate profiles listed above, then the CA SHALL:
+
+1. Publicly disclose the certificate profile of certificates for infrastructure purposes that do not follow any of the certificate profiles listed above in its Repository; and
+2. Specify in Section 7.1 its CP/CPS that it issues such certificates for infrastructure purposes from a CA that asserts compliance with these Baseline Requirements. 
 
 #### 7.1.2.1 Root CA Certificate Profile
 
