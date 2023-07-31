@@ -1725,7 +1725,7 @@ ECDSA: The CA SHOULD confirm the validity of all keys using either the ECC Full 
 
 Private Keys corresponding to Root Certificates MUST NOT be used to sign Certificates except in the following cases:
 
-1. Self-signed Certificates to represent the Root CA itself; and/or
+1. Self-signed Certificates to represent the Root CA itself;
 2. Certificates for Subordinate CAs and Cross-Certified Subordinate CA Certificates; and/or
 3. Certificates for OCSP Response verification.
 
