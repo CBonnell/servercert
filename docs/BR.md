@@ -1835,7 +1835,7 @@ If the CA asserts compliance with these Baseline Requirements, all certificates 
 [^infra_cert]: The CA SHALL NOT issue a certificate that does not follow of any of the certificates profiles that are listed above, except for certificates that are issued for infrastructure purposes (administrative role certificates, internal CA operational device certificates). If the CA issues certificates for infrastructure purposes that do not follow any of the certificate profiles listed above, then the CA SHALL:
 
 1. Publicly disclose the certificate profile of certificates for infrastructure purposes that do not follow any of the certificate profiles listed above in its Repository; and
-2. Specify in Section 7.1 its CP/CPS that it issues such certificates for infrastructure purposes from a CA that asserts compliance with these Baseline Requirements. 
+2. Specify in Section 7.1 of its CP/CPS that it issues such certificates for infrastructure purposes from a CA that asserts compliance with these Baseline Requirements. 
 
 #### 7.1.2.1 Root CA Certificate Profile
 
