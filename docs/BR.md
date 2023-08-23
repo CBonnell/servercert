@@ -1726,8 +1726,9 @@ ECDSA: The CA SHOULD confirm the validity of all keys using either the ECC Full 
 Private Keys corresponding to Root Certificates MUST NOT be used to sign Certificates except in the following cases:
 
 1. Self-signed Certificates to represent the Root CA itself;
-2. Certificates for Subordinate CAs and Cross-Certified Subordinate CA Certificates; and/or
-3. Certificates for OCSP Response verification.
+2. Certificates for Subordinate CAs and Cross-Certified Subordinate CA Certificates;
+3. Certificates for infrastructure purposes (administrative role certificates, internal CA operational device certificates); and
+4. Certificates for OCSP Response verification.
 
 ## 6.2 Private Key Protection and Cryptographic Module Engineering Controls
 
@@ -1807,15 +1808,22 @@ The CA SHALL enforce multi-factor authentication for all accounts capable of dir
 
 The CA SHALL meet the technical requirements set forth in [Section 2.2 - Publication of Information](#22-publication-of-information), [Section 6.1.5 - Key Sizes](#615-key-sizes), and [Section 6.1.6 - Public Key Parameters Generation and Quality Checking](#616-public-key-parameters-generation-and-quality-checking).
 
-Prior to 2023-09-15, the CA SHALL issue Certificates in accordance with the profile specified in these Requirements or the profile specified in version 1.8.6 of the Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates. Effective 2023-09-15, the CA SHALL issue Certificates in accordance with the profile specified in these Requirements.
-
 ### 7.1.1 Version number(s)
 
 Certificates MUST be of type X.509 v3.
 
 ### 7.1.2 Certificate Content and Extensions
 
-If the CA asserts compliance with these Baseline Requirements, all certificates that it issues MUST comply with one of the following certificate profiles, which incorporate, and are derived from [RFC 5280](https://tools.ietf.org/html/rfc5280). Except as explicitly noted, all normative requirements imposed by RFC 5280 shall apply, in addition to the normative requirements imposed by this document. CAs SHOULD examine [RFC 5280, Appendix B](https://tools.ietf.org/html/rfc5280#appendix-B) for further issues to be aware of.
+If the CA asserts compliance with these Baseline Requirements, then the CA SHALL NOT issue a certificate unless the certificate complies with the following requirements:
+
+For certificates issued by a Root CA:
+
+1. The certificate MUST adhere to at least one of the profiles listed below, or
+2. The certificate is used for infrastructure purposes as permitted by [Section 6.1.7](#617-key-usage-purposes-as-per-x509-v3-key-usage-field).
+
+For certificates issued by a Subordinate CA, the certificate MUST adhere to at least one of the profiles listed below.
+
+The following certificate profiles incorporate and are derived from [RFC 5280](https://tools.ietf.org/html/rfc5280). Except as explicitly noted, all normative requirements imposed by RFC 5280 shall apply, in addition to the normative requirements imposed by this document. CAs SHOULD examine [RFC 5280, Appendix B](https://tools.ietf.org/html/rfc5280#appendix-B) for further issues to be aware of.
 
   * CA Certificates
     * [Section 7.1.2.1 - Root CA Certificate Profile](#7121-root-ca-certificate-profile)
