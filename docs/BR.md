@@ -1,9 +1,9 @@
 ---
 title: Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates
-subtitle: Version 2.0.1
+subtitle: Version 2.0.X
 author:
   - CA/Browser Forum
-date: 17-August-2023  
+date: XX-YY-2023  
 
 
 copyright: |
@@ -131,9 +131,10 @@ The following Certificate Policy identifiers are reserved for use by CAs to asse
 | 1.8.4 | SC54 | Onion Cleanup | 24-Mar-2022 | 23-Apr-2022 |
 | 1.8.5 | SC56 | 2022 Cleanup | 25-Oct-2022 | 30-Nov-2022 |
 | 1.8.6 | SC58 | Require distributionPoint in sharded CRLs | 7-Nov-2022 |	11-Dec-2022 |
-| 1.8.7 | SC61  | New CRL entries must have a Revocation Reason Code | 1-Apr-2023 | 15-Jul-2023 |
-| 2.0.0 | SC62  | Certificate Profiles Update | 22-Apr-2023 | 15-Sep-2023 |
-| 2.0.1 | SC63  | Make OCSP optional, require CRLs, and incentivize automation | 17-Aug-2023 | 15-Mar-2024 |
+| 1.8.7 | SC61 | New CRL entries must have a Revocation Reason Code | 1-Apr-2023 | 15-Jul-2023 |
+| 2.0.0 | SC62 | Certificate Profiles Update | 22-Apr-2023 | 15-Sep-2023 |
+| 2.0.1 | SC63 | Make OCSP optional, require CRLs, and incentivize automation | 17-Aug-2023 | 15-Mar-2024 |
+| 2.0.x | SCXX | Harmonize profile for infrastructure certificates | XX-YY-2023 | XX-YY-2023 |
 
 
 
@@ -187,6 +188,7 @@ The following Certificate Policy identifiers are reserved for use by CAs to asse
 | 2023-07-15 | 4.9.1.1 and 7.2.2 | New CRL entries MUST have a revocation reason code |
 | 2023-09-15 | Section 7 (and others) | CAs MUST use the updated Certificate Profiles passed in Version 2.0.0 |
 | 2024-03-15 | 4.9.7 | CAs MUST generate and publish CRLs. |
+| 2024-06-15 | 7.1.2 | Root CAs MUST issue Certificates to be used for infrastructure purposes using one of the profiles specified in Section 7. |
 
 ## 1.3 PKI Participants
 
@@ -1730,6 +1732,8 @@ Private Keys corresponding to Root Certificates MUST NOT be used to sign Certifi
 3. Certificates for infrastructure purposes (administrative role certificates, internal CA operational device certificates); and
 4. Certificates for OCSP Response verification.
 
+All Certificates signed by the Private Key corresponding to a Root Certificate SHALL comply with the profile requirements as described in [Section 7.1.2](#712-certificate-content-and-extensions).
+
 ## 6.2 Private Key Protection and Cryptographic Module Engineering Controls
 
 The CA SHALL implement physical and logical safeguards to prevent unauthorized certificate issuance. Protection of the CA Private Key outside the validated system or device specified above MUST consist of physical security, encryption, or a combination of both, implemented in a manner that prevents disclosure of the Private Key. The CA SHALL encrypt its Private Key with an algorithm and key-length that, according to the state of the art, are capable of withstanding cryptanalytic attacks for the residual life of the encrypted key or key part.
@@ -1814,14 +1818,14 @@ Certificates MUST be of type X.509 v3.
 
 ### 7.1.2 Certificate Content and Extensions
 
-If the CA asserts compliance with these Baseline Requirements, then the CA SHALL NOT issue a certificate unless the certificate complies with the following requirements:
+If the CA asserts compliance with these Baseline Requirements, then the CA SHALL NOT issue a Certificate unless the Certificate complies with the following requirements:
 
-For certificates issued by a Root CA:
+For Certificates issued by a Root CA:
 
-1. The certificate MUST adhere to at least one of the profiles listed below, or
-2. The certificate is used for infrastructure purposes as permitted by [Section 6.1.7](#617-key-usage-purposes-as-per-x509-v3-key-usage-field).
+1. The Certificate MUST adhere to at least one of the certificate profiles listed below, or
+2. The Certificate is used for infrastructure purposes as permitted by [Section 6.1.7](#617-key-usage-purposes-as-per-x509-v3-key-usage-field). Effective June 15, 2024, the CA SHALL NOT issue a Certificate used for infrastructure purposes unless it complies with one of the certificate profiles listed below.
 
-For certificates issued by a Subordinate CA, the certificate MUST adhere to at least one of the profiles listed below.
+For Certificates issued by a Subordinate CA, the Certificate MUST adhere to at least one of the certificate profiles listed below.
 
 The following certificate profiles incorporate and are derived from [RFC 5280](https://tools.ietf.org/html/rfc5280). Except as explicitly noted, all normative requirements imposed by RFC 5280 shall apply, in addition to the normative requirements imposed by this document. CAs SHOULD examine [RFC 5280, Appendix B](https://tools.ietf.org/html/rfc5280#appendix-B) for further issues to be aware of.
 
