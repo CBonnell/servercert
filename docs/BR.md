@@ -382,6 +382,8 @@ The Definitions found in the CA/Browser Forum's Network and Certificate System S
 
 **Legal Entity**: An association, corporation, partnership, proprietorship, trust, government entity or other entity with legal standing in a country's legal system.
 
+**Linting**: A process where the content of a signed document such as a Certificate, Certificate Revocation List, or OCSP response is checked for conformance with one or more Certificate Profiles.
+
 **Non-Reserved LDH Label**: From RFC 5890 (<http://tools.ietf.org/html/rfc5890>): "The set of valid LDH labels that do not have '`--`' in the third and fourth positions."
 
 **Object Identifier**: A unique alphanumeric or numeric identifier registered under the International Organization for Standardization's applicable standard for a specific object or object class.
@@ -1099,9 +1101,20 @@ No stipulation.
 
 ### 4.3.1 CA actions during certificate issuance
 
+#### 4.3.1.1 Manual authorization of certificate issuance for Root CAs
+
 Certificate issuance by the Root CA SHALL require an individual authorized by the CA (i.e. the CA system operator, system officer, or PKI administrator) to deliberately issue a direct command in order for the Root CA to perform a certificate signing operation.
 
-Due to the complexity in implementing the certificate-formatting standards of these Requirements when issuing publicly-trusted certificates, before a certificate or precertificate is issued, the CA SHOULD implement a process to test the technical conformity of the certificate to be issued with these Requirements by signing the tbsCertificate with a dummy key that does not chain to a publicly-trusted CA Certificate. CAs can implement their own certificate linting tools, but it is RECOMMENDED they use (and help improve) the linting tools that have been widely adopted by the industry (see https://cabforum.org/resources/tools/).
+#### 4.3.1.2 Linting of to-be-signed Certificate content
+
+Due to the complexity in implementing the certificate-formatting standards of these Requirements when issuing publicly-trusted Certificates, before a Certificate or Pre-certificate is issued, the CA SHOULD implement a Linting process to test the technical conformity of the Certificate to be issued with these Requirements.
+
+Methods used to produce a certificate containing to-be-signed Certificate content include, but are not limited to:
+
+1. Sign the `tbsCertificate` with a "dummy" Private Key whose Public Key component is not certified by a Certificate that does not chain to a publicly-trusted CA Certificate; or
+2. Specify a static value for the `signature` field of the Certificate ASN.1 SEQUENCE.
+
+CAs MAY implement their own certificate Linting tools, but CAs SHOULD use (and help improve) the Linting tools that have been widely adopted by the industry (see https://cabforum.org/resources/tools/).
 
 ### 4.3.2 Notification to subscriber by the CA of issuance of certificate
 
