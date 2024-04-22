@@ -382,7 +382,7 @@ The Definitions found in the CA/Browser Forum's Network and Certificate System S
 
 **Legal Entity**: An association, corporation, partnership, proprietorship, trust, government entity or other entity with legal standing in a country's legal system.
 
-**Linting**: A process where the content of a signed document such as a Certificate, Certificate Revocation List, or OCSP response is checked for conformance with one or more Certificate Profiles.
+**Linting**: A process where the content of a signed document such as a Certificate, Certificate Revocation List, or OCSP response is checked for conformance with the profile defined in these Requirements.
 
 **Non-Reserved LDH Label**: From RFC 5890 (<http://tools.ietf.org/html/rfc5890>): "The set of valid LDH labels that do not have '`--`' in the third and fourth positions."
 
