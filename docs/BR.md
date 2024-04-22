@@ -1101,6 +1101,8 @@ No stipulation.
 
 Certificate issuance by the Root CA SHALL require an individual authorized by the CA (i.e. the CA system operator, system officer, or PKI administrator) to deliberately issue a direct command in order for the Root CA to perform a certificate signing operation.
 
+Due to the complexity in implementing the certificate-formatting standards of these Requirements when issuing publicly-trusted certificates, before a certificate or precertificate is issued, the CA SHOULD implement a process to test the technical conformity of the certificate to be issued with these Requirements by signing the tbsCertificate with a dummy key that does not chain to a publicly-trusted CA Certificate. CAs can implement their own certificate linting tools, but it is RECOMMENDED they use (and help improve) the linting tools that have been widely adopted by the industry (see https://cabforum.org/resources/tools/).
+
 ### 4.3.2 Notification to subscriber by the CA of issuance of certificate
 
 No stipulation.
