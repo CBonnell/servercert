@@ -1111,7 +1111,7 @@ Due to the complexity in implementing the certificate-formatting standards of th
 
 Methods used to produce a certificate containing to-be-signed Certificate content include, but are not limited to:
 
-1. Sign the `tbsCertificate` with a "dummy" Private Key whose Public Key component is not certified by a Certificate that does not chain to a publicly-trusted CA Certificate; or
+1. Sign the `tbsCertificate` with a "dummy" Private Key whose Public Key component is certified by a Certificate that does not chain to a publicly-trusted CA Certificate; or
 2. Specify a static value for the `signature` field of the Certificate ASN.1 SEQUENCE.
 
 CAs MAY implement their own certificate Linting tools, but CAs SHOULD use (and help improve) the Linting tools that have been widely adopted by the industry (see https://cabforum.org/resources/tools/).
